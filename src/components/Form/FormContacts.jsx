@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../store/ContactListSlice';
 import { getContacts } from '../store/selectors';
 
-// import { FormContainer } from './FormContact.styled';
+import { AddButton, FormInput } from './FormContact.styled';
 
 export function ContactsForm() {
   const [name, setName] = useState('');
@@ -59,7 +59,7 @@ export function ContactsForm() {
   return (
     <form onSubmit={onSubmit}>
       <p>Name</p>
-      <input
+      <FormInput
         type="text"
         name="name"
         value={name}
@@ -70,7 +70,7 @@ export function ContactsForm() {
         placeholder="Enter your name"
       />
       <p>Number</p>
-      <input
+      <FormInput
         type="tel"
         name="number"
         value={number}
@@ -80,7 +80,7 @@ export function ContactsForm() {
         onChange={onChange}
         placeholder="Enter your number"
       />
-      <button type="submit">Add contact</button>
+      <AddButton type="submit">Add contact</AddButton>
     </form>
   );
 }

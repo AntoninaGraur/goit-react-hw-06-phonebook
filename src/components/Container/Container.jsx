@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { ContainerDiv } from './Container.styled';
 
 export function Container({ children }) { 
-    return <Container>{children}</Container>;
+    return <ContainerDiv>{children}</ContainerDiv>;
 }
 
 Container.propTypes = {

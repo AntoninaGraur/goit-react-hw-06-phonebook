@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from '../store/selectors';
 import { setFilter } from '../store/ContactListSlice';
+import { FilterInput } from './Filter.styled';
 // import { FilterInput } from './Filter.styled';
 
 export function Filter() {
@@ -15,7 +16,7 @@ export function Filter() {
   return (
     <div>
       <h3>Find contacts by name</h3>
-      <input
+      <FilterInput
         type="text"
         value={filter}
         onChange={onChangeInput}
