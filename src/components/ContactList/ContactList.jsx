@@ -1,18 +1,24 @@
-import React from 'react';
 
 
-import { ContactMenu, DeleteBtn } from './ContactList.styled';
+import { deleteContact } from 'components/store/ContactListSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import { getFilteredContactsList } from 'components/store/selectors';
 
-const ContactList = ({ contacts, onDeleteContact }) => (
-  <ContactMenu>
-    {contacts.map((contact) => (
+export function ContactList() { 
+
+  const filteredContactsList = useSelector(getFilteredContactsList);
+  const dispatch = useDispatch();
+
+  const onContactDelete = (id) => {
+    dispatch(deleteContact(id));
+  };
+  return (
+    <ul>{filteredContactsList.map(contact => (
       <li key={contact.id}>
-        {contact.name}  :  {contact.number}
-        <DeleteBtn onClick={() => onDeleteContact(contact.id)}>Delete</DeleteBtn>
+        <p> {contact.name}:  {contact.number}</p>
+        <button onClick={() => onContactDelete(contact.id)}>
+          Delete</button>
       </li>
     ))}
-  </ContactMenu>
-);
-
-export default ContactList;
-
+    </ul>);
+};
